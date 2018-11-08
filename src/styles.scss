@@ -1,7 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 body {
     margin: 0;
+    background-color: #151516;
+    color: white;
 }
 * {
     box-sizing: border-box;
+}
+@font-face {
+    font-family: 'bingo-icon';
+    src:  url('assets/fonts/bingo-icon/bingo-icon.eot?805pnb');
+    src:  url('assets/fonts/bingo-icon/bingo-icon.eot?805pnb#iefix') format('embedded-opentype'),
+        url('assets/fonts/bingo-icon/bingo-icon.ttf?805pnb') format('truetype'),
+        url('assets/fonts/bingo-icon/bingo-icon.woff?805pnb') format('woff'),
+        url('assets/fonts/bingo-icon/bingo-icon.svg?805pnb#bingo-icon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="bi-"], [class*=" bi-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'bingo-icon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.bi-bingo:before {
+    content: "\e900";
+}
+.bi-present-box:before {
+    content: "\e901";
 }

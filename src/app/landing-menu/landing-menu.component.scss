@@ -1,0 +1,89 @@
+$padding: 24px;
+
+@font-face {
+    font-family: Quicksand;
+    src:  url('../../assets/fonts/Quicksand/Quicksand-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: Play;
+    src:  url('../../assets/fonts/Play/Play-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Oxygen;
+    src:  url('../../assets/fonts/Oxygen/Oxygen-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Orbitron;
+    src:  url('../../assets/fonts/Orbitron/Orbitron-Bold.ttf') format('truetype');
+}
+
+.panel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: $padding;
+
+    display: flex;
+    flex-direction: column;
+    border: 16px solid #252526;
+    border-radius: 16px;
+    
+    .panel-item{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        // background-color: #555555;
+        // border: solid 1px white;
+
+        .menu-button:hover{
+            color: #2662e4;
+            // border: solid 2px #2662e4;
+        }
+        .menu-button {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            // border: solid 1px white;
+            background-color: #252526;
+            padding: $padding;
+    
+            .icon {
+                font-size: 3rem;
+                padding-bottom: 8px;
+            }
+            // background-color: pink;
+        }
+        .grow3 {
+            flex-grow: 3;
+        }
+        .grow1{
+            flex-grow: 1;
+        }
+        .menu-button:nth-child(n + 2) {
+            margin-left: $padding;
+        }
+        .logo {
+            width: auto;
+            height: 180px;
+            background-color: #252526;
+        }
+    }
+
+    .panel-item:nth-child(n+2){
+        margin-top: $padding;
+    }
+
+    .caption {
+        // font-family: 'Play', sans-serif;
+        font-family: 'Orbitron', sans-serif;
+    }
+    .x2 {
+        font-size: 2rem;
+    }
+    .x6 {
+        font-size: 6rem;
+    }
+}
