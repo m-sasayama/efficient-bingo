@@ -4,21 +4,40 @@ body {
     background-color: #151516;
     color: white;
 }
+
 * {
     box-sizing: border-box;
 }
+
+@font-face {
+    font-family: Quicksand;
+    src:  url('assets/fonts/Quicksand/Quicksand-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: Play;
+    src:  url('assets/fonts/Play/Play-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Oxygen;
+    src:  url('assets/fonts/Oxygen/Oxygen-Bold.ttf') format('truetype');
+}
+@font-face {
+    font-family: Orbitron;
+    src:  url('assets/fonts/Orbitron/Orbitron-Bold.ttf') format('truetype');
+}
+
 @font-face {
     font-family: 'bingo-icon';
-    src:  url('assets/fonts/bingo-icon/bingo-icon.eot?805pnb');
-    src:  url('assets/fonts/bingo-icon/bingo-icon.eot?805pnb#iefix') format('embedded-opentype'),
-        url('assets/fonts/bingo-icon/bingo-icon.ttf?805pnb') format('truetype'),
-        url('assets/fonts/bingo-icon/bingo-icon.woff?805pnb') format('woff'),
-        url('assets/fonts/bingo-icon/bingo-icon.svg?805pnb#bingo-icon') format('svg');
+    src: url('assets/fonts/bingo-icon/bingo-icon.eot?aiilds');
+    src: url('assets/fonts/bingo-icon/bingo-icon.eot?aiilds#iefix') format('embedded-opentype'),
+        url('assets/fonts/bingo-icon/bingo-icon.ttf?aiilds') format('truetype'),
+        url('assets/fonts/bingo-icon/bingo-icon.woff?aiilds') format('woff'),
+        url('assets/fonts/bingo-icon/bingo-icon.svg?aiilds#bingo-icon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
-[class^="bi-"], [class*=" bi-"] {
+[class^="b-icon-"], [class*=" b-icon-"] {
     /* use !important to prevent issues with browser extensions that change fonts */
     font-family: 'bingo-icon' !important;
     speak: none;
@@ -27,15 +46,29 @@ body {
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
+    
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-.bi-bingo:before {
+.b-icon-bingo:before {
     content: "\e900";
 }
-.bi-present-box:before {
+.b-icon-present-box:before {
     content: "\e901";
 }
+.b-icon-setting:before {
+    content: "\e902";
+}
+
+.caption {
+    font-family: 'Orbitron', sans-serif;
+}
+.x3 {
+    font-size: 3rem;
+}
+.x6 {
+    font-size: 6rem;
+}
+

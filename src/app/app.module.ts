@@ -3,20 +3,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { LandingMenuComponent } from './landing-menu/landing-menu.component';
-import { ButtonComponent } from './button/button.component';
-import { MatIconModule } from '@angular/material/icon';
-
+import { RouterModule, Routes } from '@angular/router';
+import { AppRoutingModule } from './app-routing';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { PlayRoomComponent } from './play-room/play-room.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingMenuComponent,
-    ButtonComponent
+    NotFoundComponent,
+    PlayRoomComponent,
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MatIconModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

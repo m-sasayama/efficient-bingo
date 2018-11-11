@@ -1,17 +1,15 @@
 <div class="panel">
-
   <div class="panel-item">
-    <!-- <img class="menu-buton logo" alt="Logo" src="assets/img/logo2.png"> -->
-    <div class="caption x6">Efficient<br>BINGO</div>
+    <app-logo capSize="x6"></app-logo>
   </div>
 
   <div class="panel-item">
-    <div class="menu-button grow3">
-      <div class="caption x2">START</div>
+    <div class="menu-button grow3" (click)="gotoBingo()">
+      <div class="caption x3">START</div>
     </div>
-    <div class="menu-button grow1">
-      <mat-icon>settings</mat-icon>
-      <div class="caption">PRESENT</div>
+    <div class="menu-button grow1" (click)="gotoSetting()">
+      <div class="icon b-icon-setting"></div>
+      <div class="caption">SETTING</div>
     </div>
   </div>
 </div>
