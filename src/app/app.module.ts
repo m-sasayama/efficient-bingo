@@ -15,7 +15,7 @@ import { LogoComponent } from './logo/logo.component';
     LandingMenuComponent,
     NotFoundComponent,
     PlayRoomComponent,
-    LogoComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
