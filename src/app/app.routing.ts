@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router';
 import { LandingMenuComponent } from './landing-menu/landing-menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';

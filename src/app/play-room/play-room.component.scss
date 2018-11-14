@@ -1,0 +1,105 @@
+$padding: 36px;
+$control-menu-height: 180px;
+
+.content {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .main-view {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        overflow-y: auto;
+        overflow-x: hidden;
+        // padding: 0 $padding;
+        background-color: yellowgreen;
+
+        // ↓ control-panelがdisplay:fixedだからネガティブマージン必須。
+        height: 100vh;
+        margin-bottom: $control-menu-height; 
+
+        .bingo-panels{
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+            align-content: space-around;
+            // width: 0px;
+            width: calc(100vw - 50px);
+            height: calc(100vh - 180px);
+            background-color: coral;
+
+            .bingo-panel {
+                margin-right: $padding;
+            }
+            .bingo-panel:last-child{
+                margin-right: 0;
+            }
+        }
+        .panel-switch {
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: calc(100vh - 180px);
+            background-color: #404040;
+        }
+        .drawed-panels  {
+            overflow: hidden;
+            width: 0px;
+            // width: calc(100vw - 50px);
+            background-color: lawngreen;
+        }
+    }
+    .control-menu {
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-basis: $control-menu-height;
+        width: 100%;
+        height: $control-menu-height;
+
+        background-color: cornflowerblue;
+        padding: 0 $padding;
+
+        .control-set {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+        }
+    }
+    
+}
+
+.button {
+    cursor: pointer;
+    margin-right: $padding;
+}
+.button:last-child {
+    cursor: pointer;
+    margin-right: 0;
+}
+
+.circle {
+    padding: 30px;
+    border-radius: 50%;
+    background-color: #252526;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle:hover{
+    color: cornflowerblue;
+}
+
+.icon-size {
+    font-size: 2.2rem;
+}

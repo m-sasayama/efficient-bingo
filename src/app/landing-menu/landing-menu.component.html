@@ -1,15 +1,26 @@
 <div class="panel">
-  <div class="panel-item">
-    <app-logo capSize="x6"></app-logo>
+
+  <div class="menu">
+    <div class="menu-item">
+      <app-logo size="2.5rem"></app-logo>
+    </div>
+    <div class="menu-item">
+      <div class="menu-button grow3" (click)="gotoBingo()">
+        <div class="caption x1-h">START</div>
+      </div>
+      <div class="menu-button grow1" (click)="gotoSetting()">
+        <div class="icon b-icon-setting x1-h"></div>
+        <div class="caption">SETTING</div>
+      </div>
+    </div>
   </div>
 
-  <div class="panel-item">
-    <div class="menu-button grow3" (click)="gotoBingo()">
-      <div class="caption x3">START</div>
-    </div>
-    <div class="menu-button grow1" (click)="gotoSetting()">
-      <div class="icon b-icon-setting"></div>
-      <div class="caption">SETTING</div>
-    </div>
-  </div>
+  <dl class="special-thanks">
+    <dt>special thanks</dt>
+    <dd>Fonts <a href="https://fonts.google.com/specimen/Orbitron">Orbitron</a> Created by
+      Matt McInerney</dd>
+    <dd>Fonts <a href="https://github.com/keshikan/">DSEG</a> Created by keshikan</dd>
+    <dd>Icons by <a href="https://icon-rainbow.com">icon-rainbow.com</a></dd>
+  </dl>
+
 </div>
