@@ -15,10 +15,12 @@ import {
   animations: [
     trigger('panelSwitch', [
       state('open', style({
-        width: 'calc(100vw - 50px)'
+        width: '100vw',
+        marginRight: '50px'
       })),
       state('close', style({
-        width: '0px'
+        width: '0px',
+        marginRight: '0px'
       })),
       transition('open => close', [
         animate('0.5s')
@@ -33,10 +35,10 @@ import {
         transform: 'rotate(180deg)'
       })),
       transition('direction-left => direction-right', [
-        animate('0.5s')
+        animate('0.2s')
       ]),
       transition('direction-right => direction-left', [
-        animate('0.5s')
+        animate('0.2s')
       ]),
     ])
   ],
