@@ -13,7 +13,6 @@ $control-menu-height: 180px;
         align-items: center;
         overflow-y: auto;
         overflow-x: hidden;
-        // padding: 0 $padding;
         background-color: yellowgreen;
 
         // ↓ control-panelがdisplay:fixedだからネガティブマージン必須。
@@ -24,20 +23,36 @@ $control-menu-height: 180px;
             overflow: hidden;
             display: flex;
             flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
-            align-content: space-around;
-            // width: 0px;
-            width: calc(100vw - 50px);
             height: calc(100vh - 180px);
             background-color: coral;
 
-            .bingo-panel {
-                margin-right: $padding;
+            .slot-numbers {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex: 1;
             }
-            .bingo-panel:last-child{
-                margin-right: 0;
+            .slot-controller {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                padding: $padding;
+            }
+
+            .bingo-panel-group{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-around;
+                align-items: center;
+                flex: 1;
+                .bingo-panel {
+                    margin-right: $padding;
+                }
+                .bingo-panel:last-child{
+                    margin-right: 0;
+                }
             }
         }
         .panel-switch {
@@ -51,34 +66,32 @@ $control-menu-height: 180px;
         }
         .drawed-panels  {
             overflow: hidden;
-            width: 0px;
+            // width: 0px;
             // width: calc(100vw - 50px);
             background-color: lawngreen;
         }
     }
-    .control-menu {
-        position: fixed;
-        bottom: 0;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        flex-basis: $control-menu-height;
-        width: 100%;
-        height: $control-menu-height;
-
-        background-color: cornflowerblue;
-        padding: 0 $padding;
-
-        .control-set {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-        }
-    }
-    
 }
+.control-menu {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: $control-menu-height;
+    width: 100%;
+    height: $control-menu-height;
 
+    background-color: cornflowerblue;
+    padding: 0 $padding;
+
+}
+.control-set {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
 .button {
     cursor: pointer;
     margin-right: $padding;
@@ -86,6 +99,15 @@ $control-menu-height: 180px;
 .button:last-child {
     cursor: pointer;
     margin-right: 0;
+}
+
+.button-col {
+    cursor: pointer;
+    margin-bottom: $padding;
+}
+.button-col:last-child {
+    cursor: pointer;
+    margin-bottom: 0;
 }
 
 .circle {

@@ -1,7 +1,18 @@
 <div class="content">
   <div class="main-view">
     <div [@panelSwitch]="isLeftOpen ? 'open' : 'close'" class="bingo-panels">
-      <app-digital-panel class="bingo-panel" *ngFor="let value of panelValues" size="9rem" color="#00a497"></app-digital-panel>
+      <div class="slot-numbers">
+        <div class="bingo-panel-group">
+          <app-digital-panel class="bingo-panel" *ngFor="let value of panelValues" size="9rem" color="#00a497"></app-digital-panel>
+        </div>
+        <div class="bingo-panel-group">
+          <app-digital-panel class="bingo-panel" *ngFor="let value of panelValues" size="9rem" color="#00a497"></app-digital-panel>
+        </div>
+      </div>
+      <div class="slot-controller">
+        <div class="button-col circle icon-size b-icon-calc-plus"></div>
+        <div class="button-col circle icon-size b-icon-calc-minus"></div>
+      </div>
     </div>
     <div class="panel-switch" (click)="toggleView()">
       <div [@panelSwitch]="isLeftOpen ? 'direction-left' : 'direction-right'" class="b-icon-arrow-left"></div>
@@ -21,8 +32,6 @@
       <div class="button circle icon-size b-icon-present-box"></div>
     </div>
     <div class="control-set">
-      <div class="button circle icon-size b-icon-calc-plus"></div>
-      <div class="button circle icon-size b-icon-calc-minus"></div>
     </div>
   </div>
 </div>
