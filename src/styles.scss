@@ -51,45 +51,34 @@ body {
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
+  
     /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-.b-icon-arrow-both:before {
+  }
+  
+  .b-icon-bingo-play:before {
     content: "\e900";
-    // color: #4b4b4b;
-}
-.b-icon-arrow-left:before {
+  }
+  .b-icon-arrow-left:before {
     content: "\e901";
-    // color: #4b4b4b;
-}
-.b-icon-arrow-right:before {
-    content: "\e902";
-    // color: #4b4b4b;
-}
-.b-icon-bingo:before {
+  }
+  .b-icon-bingo:before {
     content: "\e903";
-    // color: #4b4b4b;
-}
-.b-icon-calc-minus:before {
+  }
+  .b-icon-calc-minus:before {
     content: "\e904";
-    // color: #4b4b4b;
-}
-.b-icon-calc-plus:before {
+  }
+  .b-icon-calc-plus:before {
     content: "\e905";
-    // color: #4b4b4b;
-}
-.b-icon-present-box:before {
+  }
+  .b-icon-present-box:before {
     content: "\e906";
-    // color: #4b4b4b;
-}
-.b-icon-setting:before {
+  }
+  .b-icon-setting:before {
     content: "\e907";
-    // color: #4b4b4b;
-}
-
+  }
+  
 .caption {
     font-family: 'Orbitron', sans-serif;
     font-size: 1rem;
