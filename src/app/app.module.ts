@@ -18,6 +18,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { PlayRoomComponent } from './play-room/play-room.component';
 import { LogoComponent } from './logo/logo.component';
 import { DigitalPanelComponent } from './digital-panel/digital-panel.component';
+import { BingoViewComponent } from './bingo-view/bingo-view.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { DigitalPanelComponent } from './digital-panel/digital-panel.component';
     NotFoundComponent,
     PlayRoomComponent,
     LogoComponent,
-    DigitalPanelComponent
+    DigitalPanelComponent,
+    BingoViewComponent
   ],
   imports: [
     BrowserModule,

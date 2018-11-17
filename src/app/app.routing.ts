@@ -3,12 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingMenuComponent } from './landing-menu/landing-menu.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { PlayRoomComponent } from './play-room/play-room.component';
+import { BingoViewComponent } from './bingo-view/bingo-view.component';
 
 const routes: Routes = [
     { path: '', component: LandingMenuComponent },
-    { path: 'bingo', component: LandingMenuComponent },
-    { path: 'bingo/playroom', component: PlayRoomComponent },
-    { path: 'bingo/setting', component: PlayRoomComponent },
+    { path: 'efficientbingo', component: LandingMenuComponent },
+    {
+        path: 'efficientbingo/playroom', component: PlayRoomComponent, children: [
+            { path: 'bingo', component: BingoViewComponent }
+        ]
+    },
+    { path: 'efficientbingo/setting', component: PlayRoomComponent },
     { path: '**', component: NotFoundComponent },
 ];
 

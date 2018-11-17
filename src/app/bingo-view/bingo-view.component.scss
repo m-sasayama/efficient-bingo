@@ -1,0 +1,96 @@
+$padding: 36px;
+
+.component{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    .slot-view{
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        // background-color: coral;
+    
+        .slot-numbers {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+        }
+        .panel-controller {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: $padding;
+            margin-right: 50px;
+        }
+    
+        .bingo-panel-group{
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: $padding;
+            .bingo-panel {
+                margin-right: $padding;
+            }
+            .bingo-panel:last-child{
+                margin-right: 0;
+            }
+        }
+        .bingo-panel-group:last-child{
+            margin-bottom: 0px;
+        }
+    }
+    .view-switch {
+        position: fixed;
+        right: 0;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50px;
+        height: 100%;
+        background-color: #404040;
+    }
+    .drawed-view  {
+        overflow: hidden;
+        // background-color: lawngreen;
+    }
+    
+}
+
+.circle {
+    padding: 30px;
+    border-radius: 50%;
+    background-color: #404040;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.circle:hover{
+    color: cornflowerblue;
+    // color: #20262e;
+}
+
+.button{
+    cursor: pointer;
+}
+.button:active {
+    box-shadow: inset 0px 0px 8px cornflowerblue;
+    // box-shadow: inset 0px 0px 8px #20262e;
+}
+
+.btn-direction-col{
+    margin-bottom: $padding;
+}
+.btn-direction-col:last-child{
+    margin-bottom: 0px;
+}
+
+.icon-size {
+    font-size: 1.6rem;
+}
