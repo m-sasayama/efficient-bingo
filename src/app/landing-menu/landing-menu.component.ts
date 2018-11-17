@@ -17,11 +17,11 @@ export class LandingMenuComponent implements OnInit {
   }
 
   gotoBingo() {
-    this.router.navigate(['bingo/playroom']);
+    this.router.navigate(['efficientbingo/playroom/bingo']);
   }
 
   gotoSetting() {
-    this.router.navigate(['bingo/setting']);
+    this.router.navigate(['efficientbingo/setting']);
   }
 
 }

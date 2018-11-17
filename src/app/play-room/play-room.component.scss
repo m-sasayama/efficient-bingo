@@ -1,5 +1,5 @@
 $padding: 36px;
-$control-menu-height: 180px;
+$control-menu-height: 200px;
 
 .content {
     display: flex;
@@ -13,63 +13,10 @@ $control-menu-height: 180px;
         align-items: center;
         overflow-y: auto;
         overflow-x: hidden;
+    
         // ↓ control-panelがdisplay:fixedだからマージン必須。
         height: 100vh;
         margin-bottom: $control-menu-height; 
-
-        .bingo-panels{
-            overflow: hidden;
-            display: flex;
-            flex-direction: row;
-            // background-color: coral;
-
-            .slot-numbers {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                flex: 1;
-            }
-            .slot-controller {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-end;
-                padding: $padding;
-            }
-
-            .bingo-panel-group{
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                justify-content: space-around;
-                align-items: center;
-                margin-bottom: $padding;
-                .bingo-panel {
-                    margin-right: $padding;
-                }
-                .bingo-panel:last-child{
-                    margin-right: 0;
-                }
-            }
-            .bingo-panel-group:last-child{
-                margin-bottom: 0px;
-            }
-        }
-        .panel-switch {
-            position: fixed;
-            right: 0;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 50px;
-            height: 100%;
-            background-color: #404040;
-        }
-        .drawed-panels  {
-            overflow: hidden;
-            // background-color: lawngreen;
-        }
     }
 }
 .control-menu {
@@ -77,12 +24,14 @@ $control-menu-height: 180px;
     bottom: 0;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     flex-basis: $control-menu-height;
     width: 100%;
     height: $control-menu-height;
 
-    background-color: cornflowerblue;
+    // background-color: cornflowerblue;
+    background-color: #20262e;
     padding: 0 $padding;
 }
 
@@ -91,20 +40,14 @@ $control-menu-height: 180px;
     flex-direction: row;
     flex-wrap: nowrap;
 }
-.button {
-    cursor: pointer;
-    margin-right: $padding;
-}
-.button:last-child {
-    margin-right: 0;
-}
 
-.button-col {
-    cursor: pointer;
-    margin-bottom: $padding;
-}
-.button-col:last-child {
-    margin-bottom: 0;
+.radius {
+    padding: 30px;
+    border-radius: 15px;
+    background-color: #404040;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .circle {
@@ -115,8 +58,24 @@ $control-menu-height: 180px;
     justify-content: center;
     align-items: center;
 }
-.circle:hover{
+
+.button{
+    cursor: pointer;
+}
+.button:hover{
     color: cornflowerblue;
+    // color: #20262e;
+}
+.button:active {
+    box-shadow: inset 0px 0px 8px cornflowerblue;
+    // box-shadow: inset 0px 0px 8px #20262e;
+}
+
+.btn-direction-row{
+    margin-right: $padding;
+}
+.btn-direction-row:last-child{
+    margin-right: 0px;
 }
 
 .icon-size {
