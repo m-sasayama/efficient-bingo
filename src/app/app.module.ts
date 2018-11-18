@@ -19,6 +19,7 @@ import { PlayRoomComponent } from './play-room/play-room.component';
 import { LogoComponent } from './logo/logo.component';
 import { DigitalPanelComponent } from './digital-panel/digital-panel.component';
 import { BingoViewComponent } from './bingo-view/bingo-view.component';
+import { PresentViewComponent } from './present-view/present-view.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { BingoViewComponent } from './bingo-view/bingo-view.component';
     PlayRoomComponent,
     LogoComponent,
     DigitalPanelComponent,
-    BingoViewComponent
+    BingoViewComponent,
+    PresentViewComponent
   ],
   imports: [
     BrowserModule,

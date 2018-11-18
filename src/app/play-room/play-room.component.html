@@ -1,9 +1,12 @@
 <div class="content">
+
   <div class="main-view">
     <router-outlet></router-outlet>
   </div>
-  <div class="control-menu">
+
+  <div [ngClass]="{'control-menu': true, 'bg-theme-bingo': toggleTheme, 'bg-theme-present': !toggleTheme }">
     <app-logo class="button" size="1.7rem" padding="18px" (click)="gotoLanding()"></app-logo>
+
     <div class="control-set">
       <div class="ctrl-row" style="width: 220px; text-align: right">
         <span class="caption">Drawn: {{ drawn }}</span>
@@ -16,9 +19,11 @@
         <span class="caption">Until End: {{ untilEnd }}</span>
       </div>
     </div>
+
     <div class="control-set">
-      <div class="circle button ctrl-row icon-size b-icon-bingo"></div>
-      <div class="circle button ctrl-row icon-size b-icon-present-box"></div>
+      <div class="circle button ctrl-row icon-size b-icon-bingo" (click)="gotoBingo()"></div>
+      <div class="circle button ctrl-row icon-size b-icon-present-box" (click)="gotoPresent()"></div>
     </div>
   </div>
+
 </div>

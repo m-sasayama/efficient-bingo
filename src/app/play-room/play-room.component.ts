@@ -23,6 +23,7 @@ export class PlayRoomComponent implements OnInit {
   private subscriptions: Subscription[];
 
   isDrawing = false;
+  toggleTheme = true;
   drawn = '';
   untilEnd = '';
 
@@ -56,6 +57,14 @@ export class PlayRoomComponent implements OnInit {
 
   gotoLanding() {
     this.route.navigate(['efficientbingo']);
+  }
+  gotoBingo() {
+    this.toggleTheme = true;
+    this.route.navigate(['efficientbingo/playroom/bingo']);
+  }
+  gotoPresent() {
+    this.toggleTheme = false;
+    this.route.navigate(['efficientbingo/playroom/present']);
   }
 
   beginDraw() {

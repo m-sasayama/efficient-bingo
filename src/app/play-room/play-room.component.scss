@@ -1,5 +1,7 @@
 $padding: 36px;
 $control-menu-height: 180px;
+$bingo-theme: #295692;
+$present-theme: #b55484;
 
 .content {
     display: flex;
@@ -31,7 +33,6 @@ $control-menu-height: 180px;
     height: $control-menu-height;
 
     // background-color: cornflowerblue;
-    background-color: #20262e;
     padding: 0 $padding;
 }
 
@@ -82,4 +83,17 @@ $control-menu-height: 180px;
 
 .icon-size {
     font-size: 1.6rem;
+}
+
+.bg-theme-bingo {
+    background-color: $bingo-theme;
+}
+.fb-theme-bingo {
+    color: $bingo-theme;
+}
+.bg-theme-present {
+    background-color: $present-theme;
+}
+.fb-theme-present {
+    color: $present-theme;
 }
