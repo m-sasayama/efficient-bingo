@@ -33,16 +33,14 @@ class DrawNumberService {
         this._onBeginDraw.next('begin draw.');
     }
 
-    public drawNumber(count: number): number[] {
-        const rtn = new Array<number>();
-        for (let i = 0; i < count; i++) {
-            // 抽選
-            let index: number = Math.floor(Math.random() * this.drawSrc.length);
-            let drawn: number[] = this.drawSrc.splice(index, 1);
-            // 抽選結果をリストに保存
-            Array.prototype.push.apply(this.drawnList, drawn);
-            Array.prototype.push.apply(rtn, drawn);
-        }
+    public drawNumber(): number {
+        let rtn = 0;
+        // 抽選
+        let index: number = Math.floor(Math.random() * this.drawSrc.length);
+        let drawn: number[] = this.drawSrc.splice(index, 1);
+        // 抽選結果をリストに保存
+        Array.prototype.push.apply(this.drawnList, drawn);
+        rtn = drawn[0];
         return rtn;
     }
 

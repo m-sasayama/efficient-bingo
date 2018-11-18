@@ -1,3 +1,3 @@
-<div class="digital-panel" [ngStyle]="{ 'font-size': size, 'color': color }">
-  <span>{{ displayValue }}</span>
+<div [ngClass]="{ 'digital-panel': true, 'radius': (drawnNum != null) }" [ngStyle]="{ 'font-size': size, 'color': fbColor, 'background-color': bgColor }">
+  <span style="white-space: nowrap">{{ displayValue }}</span>
 </div>

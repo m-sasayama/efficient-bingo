@@ -1,14 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { BingoService } from '../_service/draw.service';
 import { PanelViewModel } from '../_object/PanelViewModel';
-import { BingoPanelColor } from '../_object/Color';
+import { BingoPanelColor } from '../_object/ColorSet';
 import { BingoPanelSize } from '../_object/FontSize';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-bingo-view',
@@ -48,25 +44,123 @@ import { BingoPanelSize } from '../_object/FontSize';
 export class BingoViewComponent implements OnInit {
 
   isLeftOpen = true;
-  panelCount = 1;
+  panelCount = 3;
   topViews: PanelViewModel[];
   bottomViews: PanelViewModel[];
 
-  constructor() {
-    this.topViews = new Array<PanelViewModel>();
+  groupBViews: PanelViewModel[];
+  groupIViews: PanelViewModel[];
+  groupNViews: PanelViewModel[];
+  groupGViews: PanelViewModel[];
+  groupOViews: PanelViewModel[];
+
+  private subscriptions: Subscription[];
+
+  constructor(
+    private bingoService: BingoService
+  ) {
+    this.subscriptions = new Array<Subscription>();
+    this.subscriptions.push(
+      this.bingoService.onBeginDraw.subscribe((message) => {
+        this.isLeftOpen = true;
+      })
+    );
+
+    this.topViews = [{
+      fontSize: BingoPanelSize.Large,
+      colorSet: BingoPanelColor.Default
+    }, {
+      fontSize: BingoPanelSize.Large,
+      colorSet: BingoPanelColor.Default
+    }, {
+      fontSize: BingoPanelSize.Large,
+      colorSet: BingoPanelColor.Default
+    }];
+
     this.bottomViews = new Array<PanelViewModel>();
 
-    this.topViews.push({
-      fontSize: BingoPanelSize.XXLarge,
-      color: BingoPanelColor.Default
-    });
+    this.groupBViews = new Array<PanelViewModel>();
+    this.groupIViews = new Array<PanelViewModel>();
+    this.groupNViews = new Array<PanelViewModel>();
+    this.groupGViews = new Array<PanelViewModel>();
+    this.groupOViews = new Array<PanelViewModel>();
+
+    for (let i = 1, max = 75; i <= max; i++) {
+      switch (Math.floor((i - 1) / 15)) {
+        case 0:
+          this.groupBViews.push({
+            drawnNum: String(i),
+            fontSize: BingoPanelSize.Small,
+            colorSet: BingoPanelColor.Remain
+          });
+          break;
+        case 1:
+          this.groupIViews.push({
+            drawnNum: String(i),
+            fontSize: BingoPanelSize.Small,
+            colorSet: BingoPanelColor.Remain
+          });
+          break;
+        case 2:
+          this.groupNViews.push({
+            drawnNum: String(i),
+            fontSize: BingoPanelSize.Small,
+            colorSet: BingoPanelColor.Remain
+          });
+          break;
+        case 3:
+          this.groupGViews.push({
+            drawnNum: String(i),
+            fontSize: BingoPanelSize.Small,
+            colorSet: BingoPanelColor.Remain
+          });
+          break;
+        case 4:
+          this.groupOViews.push({
+            drawnNum: String(i),
+            fontSize: BingoPanelSize.Small,
+            colorSet: BingoPanelColor.Remain
+          });
+          break;
+      }
+    }
   }
 
   ngOnInit() {
   }
 
+  ngOnDestroy() {
+    this.subscriptions.forEach((subscription) => {
+      subscription.unsubscribe();
+    });
+  }
+
   switchView() {
     this.isLeftOpen = !this.isLeftOpen;
+
+    if (!this.isLeftOpen) {
+      this.bingoService.getDrawnList().forEach((drawnNum) => {
+        const viewCase = Math.floor((drawnNum - 1) / 15);
+        const viewIdx = (drawnNum - 1) % 15;
+        switch (viewCase) {
+          case 0:
+            this.groupBViews[viewIdx].colorSet = BingoPanelColor.GroupB;
+            break;
+          case 1:
+            this.groupIViews[viewIdx].colorSet = BingoPanelColor.GroupI;
+            break;
+          case 2:
+            this.groupNViews[viewIdx].colorSet = BingoPanelColor.GroupN;
+            break;
+          case 3:
+            this.groupGViews[viewIdx].colorSet = BingoPanelColor.GroupG;
+            break;
+          case 4:
+            this.groupOViews[viewIdx].colorSet = BingoPanelColor.GroupO;
+            break;
+        }
+      });
+    }
   }
 
   plusPanel() {
@@ -79,12 +173,12 @@ export class BingoViewComponent implements OnInit {
     if (1 <= this.panelCount && this.panelCount <= 3) {
       this.topViews.push({
         fontSize: BingoPanelSize.Large,
-        color: BingoPanelColor.Default
+        colorSet: BingoPanelColor.Default
       });
     } else if (4 <= this.panelCount && this.panelCount <= 6) {
       this.bottomViews.push({
         fontSize: BingoPanelSize.Middle,
-        color: BingoPanelColor.Default
+        colorSet: BingoPanelColor.Default
       });
     }
 

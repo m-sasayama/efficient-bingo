@@ -1,4 +1,7 @@
+import { ColorSet } from "./ColorSet";
+
 export interface PanelViewModel {
     fontSize: string;
-    color: string;
+    colorSet: ColorSet;
+    drawnNum?: string;
 }

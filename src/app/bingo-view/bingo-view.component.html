@@ -2,10 +2,12 @@
   <div [@panelSwitch]="isLeftOpen ? 'open' : 'close'" class="slot-view">
     <div class="slot-numbers">
       <div class="bingo-panel-group">
-        <app-digital-panel class="bingo-panel" *ngFor="let view of topViews" size="{{ view.fontSize }}" color="{{ view.color }}"></app-digital-panel>
+        <app-digital-panel class="bingo-panel" *ngFor="let view of topViews" size="{{ view.fontSize }}" fbColor="{{ view.colorSet.fbColor }}"
+          bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
       </div>
       <div class="bingo-panel-group">
-        <app-digital-panel class="bingo-panel" *ngFor="let view of bottomViews" size="{{ view.fontSize }}" color="{{ view.color }}"></app-digital-panel>
+        <app-digital-panel class="bingo-panel" *ngFor="let view of bottomViews" size="{{ view.fontSize }}" fbColor="{{ view.colorSet.fbColor }}"
+          bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
       </div>
     </div>
     <div class="panel-controller">
@@ -16,6 +18,25 @@
   <div class="view-switch" (click)="switchView()">
     <div [@panelSwitch]="isLeftOpen ? 'direction-left' : 'direction-right'" class="b-icon-arrow-left"></div>
   </div>
-  <div [@panelSwitch]="isLeftOpen ? 'close' : 'open'" class="drawed-view">
+  <div [@panelSwitch]="isLeftOpen ? 'close' : 'open'" class="drawn-view">
+    <div class="drawn-numbers">
+      <app-digital-panel *ngFor="let view of groupBViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
+        fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
+    </div>
+    <div class="drawn-numbers">
+      <app-digital-panel *ngFor="let view of groupIViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
+        fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
+    </div>
+    <div class="drawn-numbers">
+      <app-digital-panel *ngFor="let view of groupNViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
+        fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
+    </div>
+    <div class="drawn-numbers">
+      <app-digital-panel *ngFor="let view of groupGViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
+        fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
+    </div>
+    <div class="drawn-numbers">
+      <app-digital-panel *ngFor="let view of groupOViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
+        fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
+    </div>
   </div>
-</div>
