@@ -78,10 +78,14 @@ body {
   .b-icon-setting:before {
     content: "\e907";
   }
+  .b-icon-spinner:before {
+    content: "\e982";
+  }
   
 .caption {
     font-family: 'Orbitron', sans-serif;
     font-size: 1rem;
+    white-space: pre-wrap;
 }
 
 .special-thanks {

@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { BingoService } from '../_service/draw.service'
 import { Subscription } from 'rxjs';
-import { ColorSet } from '../_object/ColorSet';
 
 @Component({
   selector: 'app-digital-panel',
@@ -30,16 +29,20 @@ export class DigitalPanelComponent implements OnInit {
     this.displayValue = '--';
 
     if (!this.drawnNum) {
+
       this.subscriptions.push(
         this.bingoService.onBeginDraw.subscribe((message) => {
+
           // ランダムに数字を表示する
           this.randomDisplay = setInterval(() => {
             const randomNumber = Math.floor(Math.random() * 100);
             this.displayValue = ('00' + randomNumber).slice(-2);
           }, 50);
+
           // BingoServiceから番号を取得する
           const drawNumber = this.bingoService.drawNumber();
           console.log('draw Number: %s', drawNumber);
+
           // 数秒後にランダム表示を終了させて、BingoServiceから取得した番号を表示する
           setTimeout(() => {
             clearInterval(this.randomDisplay);
@@ -48,9 +51,11 @@ export class DigitalPanelComponent implements OnInit {
             } else {
               this.displayValue = '--';
             }
+            this.bingoService.drawn();
           }, 2000);
         })
       );
+
     } else {
       this.displayValue = ('00' + this.drawnNum).slice(-2);
     }

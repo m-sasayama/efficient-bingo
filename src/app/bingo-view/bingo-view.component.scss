@@ -33,7 +33,6 @@ $padding: 36px;
             flex-wrap: nowrap;
             justify-content: space-around;
             align-items: center;
-            margin-bottom: $padding;
             .bingo-panel {
                 margin-right: $padding;
             }
@@ -41,7 +40,10 @@ $padding: 36px;
                 margin-right: 0;
             }
         }
-        .bingo-panel-group:last-child{
+        .group-padding {
+            margin-bottom: $padding;
+        }
+        .group-padding:last-child{
             margin-bottom: 0px;
         }
     }

@@ -10,32 +10,14 @@ import { Subscription } from 'rxjs';
   selector: 'app-bingo-view',
   animations: [
     trigger('panelSwitch', [
-      state('open', style({
-        width: '100vw',
-        marginRight: '50px'
-      })),
-      state('close', style({
-        width: '0px',
-        marginRight: '0px'
-      })),
-      transition('open => close', [
-        animate('0.5s')
-      ]),
-      transition('close => open', [
-        animate('0.5s')
-      ]),
-      state('direction-left', style({
-        transform: 'rotate(0deg)'
-      })),
-      state('direction-right', style({
-        transform: 'rotate(180deg)'
-      })),
-      transition('direction-left => direction-right', [
-        animate('0.2s')
-      ]),
-      transition('direction-right => direction-left', [
-        animate('0.2s')
-      ]),
+      state('open', style({ width: '100vw' })),
+      state('close', style({ width: '0px' })),
+      transition('open => close', [animate('0.5s')]),
+      transition('close => open', [animate('0.5s')]),
+      state('direction-left', style({ transform: 'rotate(0deg)' })),
+      state('direction-right', style({ transform: 'rotate(180deg)' })),
+      transition('direction-left => direction-right', [animate('0.2s')]),
+      transition('direction-right => direction-left', [animate('0.2s')]),
     ])
   ],
   templateUrl: './bingo-view.component.html',
@@ -76,7 +58,6 @@ export class BingoViewComponent implements OnInit {
       fontSize: BingoPanelSize.Large,
       colorSet: BingoPanelColor.Default
     }];
-
     this.bottomViews = new Array<PanelViewModel>();
 
     this.groupBViews = new Array<PanelViewModel>();
@@ -84,7 +65,6 @@ export class BingoViewComponent implements OnInit {
     this.groupNViews = new Array<PanelViewModel>();
     this.groupGViews = new Array<PanelViewModel>();
     this.groupOViews = new Array<PanelViewModel>();
-
     for (let i = 1, max = 75; i <= max; i++) {
       switch (Math.floor((i - 1) / 15)) {
         case 0:

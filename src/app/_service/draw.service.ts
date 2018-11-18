@@ -1,12 +1,15 @@
 import { Injectable } from "@angular/core";
-import { Subject, Observable } from "rxjs";
+import {
+    Subject, Observable,
+    // forkJoin, of
+} from "rxjs";
+
 
 class DrawNumberService {
     public onBeginDraw: Observable<string>;
     private _onBeginDraw: Subject<string>;
-
-    // public onDrawn: Observable<string[]>;
-    // private _onDrawn: Subject<string[]>;
+    public onDrawn: Observable<string>;
+    private _onDrawn: Subject<string>;
 
     private drawSrc: number[];
     private max: number;
@@ -16,8 +19,9 @@ class DrawNumberService {
 
         this._onBeginDraw = new Subject<string>();
         this.onBeginDraw = this._onBeginDraw.asObservable();
-        // this._onDrawn = new Subject<string[]>();
-        // this.onDrawn = this._onDrawn.asObservable();
+        this._onDrawn = new Subject<string>();
+        this.onDrawn = this._onDrawn.asObservable();
+        // this.onDrawn = forkJoin()
 
         this.max = max;
         this.drawSrc = new Array<number>();
@@ -31,6 +35,10 @@ class DrawNumberService {
 
     public beginDraw() {
         this._onBeginDraw.next('begin draw.');
+    }
+
+    public drawn() {
+        this._onDrawn.next('drawn.');
     }
 
     public drawNumber(): number {

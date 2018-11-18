@@ -1,11 +1,11 @@
 <div class="component">
   <div [@panelSwitch]="isLeftOpen ? 'open' : 'close'" class="slot-view">
     <div class="slot-numbers">
-      <div class="bingo-panel-group">
+      <div [ngClass]="{ 'bingo-panel-group': true, 'group-padding': (panelCount >= 4)}">
         <app-digital-panel class="bingo-panel" *ngFor="let view of topViews" size="{{ view.fontSize }}" fbColor="{{ view.colorSet.fbColor }}"
           bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
       </div>
-      <div class="bingo-panel-group">
+      <div [ngClass]="{ 'bingo-panel-group': true, 'group-padding': (panelCount >= 4)}">
         <app-digital-panel class="bingo-panel" *ngFor="let view of bottomViews" size="{{ view.fontSize }}" fbColor="{{ view.colorSet.fbColor }}"
           bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
       </div>

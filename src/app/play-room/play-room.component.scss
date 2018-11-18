@@ -1,5 +1,5 @@
 $padding: 36px;
-$control-menu-height: 200px;
+$control-menu-height: 180px;
 
 .content {
     display: flex;
@@ -39,6 +39,8 @@ $control-menu-height: 200px;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .radius {
@@ -71,10 +73,10 @@ $control-menu-height: 200px;
     // box-shadow: inset 0px 0px 8px #20262e;
 }
 
-.btn-direction-row{
+.ctrl-row{
     margin-right: $padding;
 }
-.btn-direction-row:last-child{
+.ctrl-row:last-child{
     margin-right: 0px;
 }
 

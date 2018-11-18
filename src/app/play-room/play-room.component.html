@@ -5,14 +5,20 @@
   <div class="control-menu">
     <app-logo class="button" size="1.7rem" padding="18px" (click)="gotoLanding()"></app-logo>
     <div class="control-set">
-      <div class="radius button icon-size" (click)="beginDraw()">
-        <div class="b-icon b-icon-bingo-play"></div>
-        <div class="caption icon-size" style="margin-left: 16px;">Play</div>
+      <div class="ctrl-row" style="width: 220px; text-align: right">
+        <span class="caption">Drawn: {{ drawn }}</span>
+      </div>
+      <div [ngClass]="{ 'radius': true, 'button': !isDrawing, 'ctrl-row':true, 'icon-size': true }" (click)="beginDraw()">
+        <div [@drawing]="isDrawing ? 'active' : 'inactive'" [ngClass]="{ 'b-icon': true, 'b-icon-bingo-play': !isDrawing, 'b-icon-spinner': isDrawing }"></div>
+        <div class="caption icon-size" style="margin-left: 16px;">{{ isDrawing ? 'Wait' : 'Play' }}</div>
+      </div>
+      <div class="ctrl-row" style="width: 220px; text-align: left">
+        <span class="caption">Until End: {{ untilEnd }}</span>
       </div>
     </div>
     <div class="control-set">
-      <div class="circle button btn-direction-row icon-size b-icon-bingo"></div>
-      <div class="circle button btn-direction-row icon-size b-icon-present-box"></div>
+      <div class="circle button ctrl-row icon-size b-icon-bingo"></div>
+      <div class="circle button ctrl-row icon-size b-icon-present-box"></div>
     </div>
   </div>
 </div>
