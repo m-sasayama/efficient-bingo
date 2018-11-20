@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgModel } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -7,9 +7,10 @@ import {
   MatInputModule,
   MatIconModule,
   MatSliderModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatCheckboxModule,
+  MatCardModule
 } from '@angular/material';
-
 
 import { AppRoutingModule } from './app.routing';
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import { LogoComponent } from './logo/logo.component';
 import { DigitalPanelComponent } from './digital-panel/digital-panel.component';
 import { BingoViewComponent } from './bingo-view/bingo-view.component';
 import { PresentViewComponent } from './present-view/present-view.component';
+import { SettingComponent } from './setting/setting.component';
+import { SettingService } from './_service/setting.service';
 
 
 @NgModule({
@@ -31,7 +34,8 @@ import { PresentViewComponent } from './present-view/present-view.component';
     LogoComponent,
     DigitalPanelComponent,
     BingoViewComponent,
-    PresentViewComponent
+    PresentViewComponent,
+    SettingComponent
   ],
   imports: [
     BrowserModule,
@@ -41,9 +45,13 @@ import { PresentViewComponent } from './present-view/present-view.component';
     MatSliderModule,
     MatInputModule,
     MatFormFieldModule,
-    AppRoutingModule
+    MatCardModule,
+    MatCheckboxModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [SettingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

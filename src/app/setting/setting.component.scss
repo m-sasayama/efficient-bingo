@@ -1,0 +1,79 @@
+$padding: 32px;
+input, textarea {
+    // font-size: calc(100vw / 64);
+    font-size: 24px;
+}
+label {
+    // font-size: calc(100vw / 64);
+    font-size: 18px;
+}
+img {
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-right: $padding;
+    border: dotted 2.5px white;
+    padding: 16px;
+}
+img:last-child() {
+    margin-right: 0px;
+}
+img:hover {
+    border-color: orange;
+}
+.current {
+    border-color: lightgreen;
+}
+
+.container {
+    padding: $padding;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .mat-card-title{
+        font-size: 28px;
+    }
+    .card {
+        width: 100%;
+    }
+    .card:nth-child(n+2) {
+        margin-top: $padding;
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-field > * {
+        width: 100%;
+    }
+}
+.thumbnail-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: auto;
+    height: 250px;
+    margin-bottom: $padding;
+}
+.file-upload-btn {
+    cursor: pointer;
+    display: inline-block;
+    padding: 8px;
+    margin: 0 $padding;
+    background-color: darkcyan;
+    border-radius: 8px;
+}
+.button {
+    cursor: pointer;
+    margin-top: $padding;
+    padding: 16px;;
+    background-color: darkcyan;
+    font-size: 24px;
+    border-radius: 15px;
+}

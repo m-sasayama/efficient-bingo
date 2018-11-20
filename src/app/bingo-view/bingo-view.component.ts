@@ -5,6 +5,7 @@ import { PanelViewModel } from '../_object/PanelViewModel';
 import { BingoPanelColor } from '../_object/ColorSet';
 import { BingoPanelSize } from '../_object/FontSize';
 import { Subscription } from 'rxjs';
+import { SettingService } from '../_service/setting.service';
 
 @Component({
   selector: 'app-bingo-view',
@@ -39,7 +40,8 @@ export class BingoViewComponent implements OnInit {
   private subscriptions: Subscription[];
 
   constructor(
-    private bingoService: BingoService
+    private bingoService: BingoService,
+    private settingService: SettingService
   ) {
     this.subscriptions = new Array<Subscription>();
     this.subscriptions.push(
@@ -48,17 +50,23 @@ export class BingoViewComponent implements OnInit {
       })
     );
 
-    this.topViews = [{
-      fontSize: BingoPanelSize.Large,
-      colorSet: BingoPanelColor.Default
-    }, {
-      fontSize: BingoPanelSize.Large,
-      colorSet: BingoPanelColor.Default
-    }, {
-      fontSize: BingoPanelSize.Large,
-      colorSet: BingoPanelColor.Default
-    }];
+    this.panelCount = this.settingService.getPanelCount();
+
+
+    this.topViews = new Array<PanelViewModel>();
     this.bottomViews = new Array<PanelViewModel>();
+    for (let i = 0, max = this.panelCount; i < max; i++) {
+      let panelModel: PanelViewModel = {
+        fontSize: BingoPanelSize.Large,
+        colorSet: BingoPanelColor.Default
+      }
+      if (0 <= i && i < 3) {
+        this.topViews.push(panelModel);
+      } else if (3 <= i && i < 6) {
+        this.bottomViews.push(panelModel)
+      }
+    }
+    this.changeFontSize();
 
     this.groupBViews = new Array<PanelViewModel>();
     this.groupIViews = new Array<PanelViewModel>();

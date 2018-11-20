@@ -59,10 +59,16 @@ export class PlayRoomComponent implements OnInit {
     this.route.navigate(['efficientbingo']);
   }
   gotoBingo() {
+    this.drawn = ('  ' + this.bingoService.getDrawnList().length).slice(-2);
+    this.untilEnd = ('  ' + this.bingoService.getUntilEnd()).slice(-2);
+
     this.toggleTheme = true;
     this.route.navigate(['efficientbingo/playroom/bingo']);
   }
   gotoPresent() {
+    this.drawn = ('  ' + this.presentService.getDrawnList().length).slice(-2);
+    this.untilEnd = ('  ' + this.presentService.getUntilEnd()).slice(-2);
+
     this.toggleTheme = false;
     this.route.navigate(['efficientbingo/playroom/present']);
   }
