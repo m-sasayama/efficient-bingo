@@ -21,16 +21,17 @@ class DrawNumberService {
         this.onBeginDraw = this._onBeginDraw.asObservable();
         this._onDrawn = new Subject<string>();
         this.onDrawn = this._onDrawn.asObservable();
-        // this.onDrawn = forkJoin()
 
+        this.reset(max);
+    }
+
+    public reset(max: number) {
         this.max = max;
         this.drawSrc = new Array<number>();
         this.drawnList = new Array<number>();
-
         for (let i = 0; i < this.max; i++) {
             this.drawSrc.push(i + 1);
         }
-
     }
 
     public beginDraw() {
@@ -71,6 +72,6 @@ export class BingoService extends DrawNumberService {
 @Injectable()
 export class PresentService extends DrawNumberService {
     constructor() {
-        super(30);
+        super(0);
     }
 }
