@@ -5,10 +5,10 @@
       <mat-card-title>ビンゴの設定</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form class="form-field">
+      <form class="input-fields">
         <mat-form-field>
           <input matInput type="number" placeholder="ビンゴパネルの枚数（初期値）" min="1" max="6" step="1" [formControl]="panelCount"
-            (change)="handleChange($event, 'panelCount')">
+            (change)="handleChangeSetting($event, 'panelCount')">
         </mat-form-field>
       </form>
     </mat-card-content>
@@ -18,27 +18,50 @@
     <mat-card-header>
       <mat-card-title>プレゼントの設定</mat-card-title>
     </mat-card-header>
-    <label>サムネイル画像を選択してください</label>
-    <label for="present" class="file-upload-btn">
-      サムネイル画像の登録はこちら
-      <input id="present" type="file" name="files[]" style="display: none" multiple="multiple" accept="image/*"
-        (change)="handleFileSelect($event)" />
-    </label>
-    <div class="thumbnail-list">
-      <img *ngFor="let file of imageFiles" [ngClass]="{'current': file.isCurrent }" [attr.src]="file.src" [attr.title]="file.name"
-        alt="thumbnail" (click)="handleThumbSelect($event)">
-    </div>
-    <mat-card-content>
-      <form class="form-field">
-        <mat-form-field>
-          <input matInput type="text" placeholder="景品の名前" [formControl]="presentName" (change)="handleChange($event, 'presentName')" />
-        </mat-form-field>
-        <mat-form-field>
-          <textarea matInput placeholder="景品の説明" cdkTextareaAutosize cdkAutosizeMinRows="2" cdkAutosizeMaxRows="5"
-            [formControl]="presentDesc" (change)="handleChange($event, 'presentDesc')"></textarea>
-        </mat-form-field>
-        <mat-checkbox [formControl]="isSecret" (change)="handleChange($event, 'isSecret')">シークレット表示</mat-checkbox>
-      </form>
+
+    <mat-card-content class="present-setting">
+      <div class="column-frame" *ngIf="imageFiles.length > 0">
+        <div>
+          <label>景品の名前、説明、シークレット表示の有無を設定してください</label>
+          <label class="setting-btn" (click)="openDialog()">JSONの入力・出力はこちら</label>
+        </div>
+        <form class="input-fields">
+          <mat-form-field>
+            <input matInput type="text" placeholder="景品の名前" [formControl]="presentTitle" (change)="handleChangeSetting($event, 'presentTitle')">
+          </mat-form-field>
+          <mat-form-field>
+            <textarea matInput rows="2" placeholder="景品の説明" [formControl]="presentDesc" (change)="handleChangeSetting($event, 'presentDesc')"></textarea>
+          </mat-form-field>
+          <mat-checkbox [formControl]="isSecret" (change)="handleChangeSetting($event, 'isSecret')">シークレット表示</mat-checkbox>
+        </form>
+        <div class="current-controller">
+          <button mat-fab color="warn" (click)="handleChangeCurrent(-1)">＜</button>
+          <button mat-fab color="warn" (click)="handleChangeCurrent(1)">＞</button>
+        </div>
+        <ng-container *ngIf="nonSettings.length > 0">
+          <div class="err-message">次のサムネイルに対する設定が見つかりません</div>
+          <div class="err-message">{{ nonSettings.join(', ') }}</div>
+        </ng-container>
+      </div>
+      <div class="column-frame fix-column">
+        <div>
+          <label>景品のサムネイル画像を登録してください</label>
+          <label for="fileRegist" class="setting-btn">登録はこちら
+            <input id="fileRegist" type="file" name="files[]" style="display: none" multiple="multiple" accept="image/*"
+              (change)="handleRegistFile($event)" />
+          </label>
+        </div>
+        <div class="thumbnail-list">
+          <ng-container *ngFor="let file of imageFiles; let idx = index">
+            <div id="{{ anchorPrefix + (idx + 1) }}" [ngClass]="{'thumbnail': true, 'isCurrent': file.isCurrent, 'isSuccess': file.isSuccess, 'isError': file.isError }"
+              (click)="handleSelectImage(file.name)">
+              <img [attr.src]="file.src" [attr.title]="file.name" alt="thumbnail">
+              <span class="badge" (click)="handleRemoveImage(file.name)">×</span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
     </mat-card-content>
   </mat-card>
 

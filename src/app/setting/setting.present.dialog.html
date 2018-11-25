@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>JSONで入力</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <textarea matInput [(ngModel)]="json"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="json" cdkFocusInitial>設定</button>
+</div>

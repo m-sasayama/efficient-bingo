@@ -5,11 +5,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatButtonModule,
   MatInputModule,
-  MatIconModule,
-  MatSliderModule,
+  MatCardModule,
   MatFormFieldModule,
   MatCheckboxModule,
-  MatCardModule
+  MatDialogModule,
 } from '@angular/material';
 
 import { AppRoutingModule } from './app.routing';
@@ -21,9 +20,9 @@ import { LogoComponent } from './logo/logo.component';
 import { DigitalPanelComponent } from './digital-panel/digital-panel.component';
 import { BingoViewComponent } from './bingo-view/bingo-view.component';
 import { PresentViewComponent } from './present-view/present-view.component';
-import { SettingComponent } from './setting/setting.component';
+import { SettingComponent, PresentSettingDialog } from './setting/setting.component';
 import { SettingService } from './_service/setting.service';
-
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,21 +34,27 @@ import { SettingService } from './_service/setting.service';
     DigitalPanelComponent,
     BingoViewComponent,
     PresentViewComponent,
-    SettingComponent
+    SettingComponent,
+    PresentSettingDialog,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule,
-    MatSliderModule,
     MatInputModule,
     MatFormFieldModule,
     MatCardModule,
+    MatDialogModule,
     MatCheckboxModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+  ],
+  entryComponents: [
+    SettingComponent,
+    PresentSettingDialog,
+    ConfirmDialogComponent
   ],
   providers: [SettingService],
   bootstrap: [AppComponent]

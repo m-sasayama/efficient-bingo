@@ -1,12 +1,22 @@
-export interface ReadFileInfo {
+export interface ImageFileInfo {
     name: string;
     src: string;
     isCurrent: boolean;
+    isSuccess: boolean;
+    isError: boolean;
+}
+
+export interface PresentPanelInfo {
+    fileName: string,
+    src: string,
+    title: string,
+    description: string,
+    isSecret: boolean
 }
 
 export interface PresentInfo {
-    thumbnail: string,
-    name: string,
+    fileName: string,
+    title: string,
     description: string,
     isSecret: boolean
 }
