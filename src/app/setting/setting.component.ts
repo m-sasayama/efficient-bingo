@@ -215,6 +215,10 @@ export class SettingComponent implements OnInit {
         confirmMessage = 'ビンゴゲームに移動すると不完全なプレゼント情報は削除します。'
       }
     }
+    if (!confirmMessage) {
+      this.route.navigate(['efficientbingo/playroom/bingo']);
+      return;
+    }
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       width: '720px',
@@ -222,9 +226,7 @@ export class SettingComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((isOK) => {
-
       if (isOK) {
-
         for (const targetName of this.nonSettings) {
           for (let i = this.presentList.length - 1, end = 0; i >= end; i--) {
             if (this.presentList[i].fileName === targetName) {
