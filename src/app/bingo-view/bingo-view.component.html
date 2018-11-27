@@ -1,42 +1,61 @@
-<div class="component">
+<div class="container">
+
+  <!-- アニメーションで隠れる領域（左側）-->
   <div [@panelSwitch]="isLeftOpen ? 'open' : 'close'" class="slot-view">
+
+    <!-- ビンゴパネル -->
     <div class="slot-numbers">
+      <!-- ビンゴパネル(上段グループ) -->
       <div [ngClass]="{ 'bingo-panel-group': true, 'group-padding': (panelCount >= 4)}">
         <app-digital-panel class="bingo-panel" *ngFor="let view of topViews" size="{{ view.fontSize }}" fbColor="{{ view.colorSet.fbColor }}"
           bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
       </div>
+      <!-- ビンゴパネル(下段グループ) -->
       <div [ngClass]="{ 'bingo-panel-group': true, 'group-padding': (panelCount >= 4)}">
         <app-digital-panel class="bingo-panel" *ngFor="let view of bottomViews" size="{{ view.fontSize }}" fbColor="{{ view.colorSet.fbColor }}"
           bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
       </div>
     </div>
+
+    <!-- ビンゴパネル増減スイッチ -->
     <div class="panel-controller">
       <div class="circle button btn-direction-col icon-size b-icon-calc-plus" (click)="plusPanel()"></div>
       <div class="circle button btn-direction-col icon-size b-icon-calc-minus" (click)="minusPanel()"></div>
     </div>
   </div>
+
+  <!-- アニメーションで隠れない領域（右端固定） -->
   <div class="view-switch" (click)="switchView()">
     <div [@panelSwitch]="isLeftOpen ? 'direction-left' : 'direction-right'" class="b-icon-arrow-left"></div>
   </div>
+
+  <!-- アニメーションで隠れる領域（右端） -->
   <div [@panelSwitch]="isLeftOpen ? 'close' : 'open'" class="drawn-view">
+    <!-- グループ「B」（1～15）-->
     <div class="drawn-numbers">
       <app-digital-panel *ngFor="let view of groupBViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
         fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
     </div>
+    <!-- グループ「I」（16～30）-->
     <div class="drawn-numbers">
       <app-digital-panel *ngFor="let view of groupIViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
         fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
     </div>
+    <!-- グループ「N」（31～45）-->
     <div class="drawn-numbers">
       <app-digital-panel *ngFor="let view of groupNViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
         fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
     </div>
+    <!-- グループ「G」（46～60）-->
     <div class="drawn-numbers">
       <app-digital-panel *ngFor="let view of groupGViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
         fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
     </div>
+    <!-- グループ「O」（61～75）-->
     <div class="drawn-numbers">
       <app-digital-panel *ngFor="let view of groupOViews" drawnNum="{{ view.drawnNum }}" size="{{ view.fontSize }}"
         fbColor="{{ view.colorSet.fbColor }}" bgColor="{{ view.colorSet.bgColor }}"></app-digital-panel>
     </div>
   </div>
+
+</div>

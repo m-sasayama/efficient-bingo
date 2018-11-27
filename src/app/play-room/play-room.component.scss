@@ -8,40 +8,42 @@ $present-theme: #b55484;
     flex-direction: column;
     height: 100vh;
 
-    .main-view {
+    // .main-view {
+    //     display: flex;
+    //     flex-direction: row;
+    //     flex-wrap: nowrap;
+    //     align-items: center;
+    //     overflow-y: auto;
+    //     overflow-x: hidden;
+    //     // ↓ control-panelがdisplay:fixedだからマージン必須。
+    //     height: 100vh;
+    //     margin-bottom: $control-menu-height; 
+    // }
+
+    .control-menu {
+        position: fixed;
+        bottom: 0;
         display: flex;
         flex-direction: row;
-        flex-wrap: nowrap;
+        justify-content: space-between;
         align-items: center;
-        overflow-y: auto;
-        overflow-x: hidden;
+        flex-basis: $control-menu-height;
+        flex-shrink: 0;
+        flex-grow: 0;
+        width: 100vw;
+        height: $control-menu-height;
     
-        // ↓ control-panelがdisplay:fixedだからマージン必須。
-        height: 100vh;
-        margin-bottom: $control-menu-height; 
+        // background-color: cornflowerblue;
+        padding: 0 $padding;
+    
+        .control-set {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
     }
-}
-.control-menu {
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-basis: $control-menu-height;
-    width: 100%;
-    height: $control-menu-height;
-
-    // background-color: cornflowerblue;
-    padding: 0 $padding;
-}
-
-.control-set {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-items: center;
 }
 
 .radius {
@@ -81,11 +83,9 @@ $present-theme: #b55484;
 .ctrl-row:last-child{
     margin-right: 0px;
 }
-
 .icon-size {
     font-size: 1.6rem;
 }
-
 .bg-theme-bingo {
     background-color: $bingo-theme;
 }

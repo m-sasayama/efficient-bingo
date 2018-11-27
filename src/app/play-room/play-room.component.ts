@@ -3,6 +3,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { BingoService, PresentService } from '../_service/draw.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SettingService } from '../_service/setting.service';
 
 @Component({
   selector: 'app-play-room',
@@ -30,8 +31,10 @@ export class PlayRoomComponent implements OnInit {
   constructor(
     private bingoService: BingoService,
     private presentService: PresentService,
+    private settingService: SettingService,
     private route: Router
   ) {
+
     this.subscriptions = new Array<Subscription>();
 
     this.drawn = ('  ' + this.bingoService.getDrawnList().length).slice(-2);
@@ -42,6 +45,16 @@ export class PlayRoomComponent implements OnInit {
         this.isDrawing = false;
         this.drawn = ('  ' + this.bingoService.getDrawnList().length).slice(-2);
         this.untilEnd = ('  ' + this.bingoService.getUntilEnd()).slice(-2);
+      })
+    );
+
+    const presentCount = this.settingService.getPresentPanelInfo().length;
+    this.presentService.reset(presentCount);
+    this.subscriptions.push(
+      this.presentService.onDrawn.subscribe((message) => {
+        this.isDrawing = false;
+        this.drawn = ('  ' + this.presentService.getDrawnList().length).slice(-2);
+        this.untilEnd = ('  ' + this.presentService.getUntilEnd()).slice(-2);
       })
     );
   }

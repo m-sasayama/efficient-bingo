@@ -11,7 +11,8 @@ export interface PresentPanelInfo {
     src: string,
     title: string,
     description: string,
-    isSecret: boolean
+    isSecret: boolean,
+    isDrawn: boolean
 }
 
 export interface PresentInfo {

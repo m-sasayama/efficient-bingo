@@ -6,6 +6,7 @@ export class SettingService {
     private panelCount: number;
     private presents: PresentInfo[];
     private imageFiles: ImageFileInfo[];
+    private presentPanels: PresentPanelInfo[];
 
     constructor() {
         this.panelCount = 3;
@@ -29,21 +30,28 @@ export class SettingService {
         return this.presents;
     }
     public getPresentPanelInfo(): PresentPanelInfo[] {
-        const rtn = new Array<PresentPanelInfo>();
-        for (const present of this.presents) {
-            for (const file of this.imageFiles) {
-                if (present.fileName === file.name) {
-                    rtn.push({
-                        fileName: present.fileName,
-                        src: file.src,
-                        title: present.title,
-                        description: present.description,
-                        isSecret: present.isSecret
-                    });
-                    break;
+
+        if (!(this.presentPanels && this.presentPanels.length > 0)) {
+
+            this.presentPanels = new Array<PresentPanelInfo>();
+
+            for (const present of this.presents) {
+                for (const file of this.imageFiles) {
+                    if (present.fileName === file.name) {
+                        this.presentPanels.push({
+                            fileName: present.fileName,
+                            src: file.src,
+                            title: present.title,
+                            description: present.description,
+                            isSecret: present.isSecret,
+                            isDrawn: false
+                        });
+                        break;
+                    }
                 }
             }
         }
-        return rtn;
+
+        return this.presentPanels;
     }
 }

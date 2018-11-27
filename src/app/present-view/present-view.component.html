@@ -1,3 +1,8 @@
-<p>
-  present-view works!
-</p>
+<div ngClass="container">
+  <div id="reelDiv" class="presents">
+    <app-present-panel *ngFor="let present of presentList; index as i" [index]="i"></app-present-panel>
+    <ng-container *ngIf="!previewMode">
+      <app-present-panel *ngFor="let dummy of dummyList; index as i" [index]="i"></app-present-panel>
+    </ng-container>
+  </div>
+</div>

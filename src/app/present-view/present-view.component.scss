@@ -1,0 +1,19 @@
+.container {
+    height: calc(100vh - 180px); // play-room画面の下段固定表示しているcontroller領域の高さを引く
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    overflow-y: auto;
+
+    .presents{
+        display: flex;
+        position: relative;
+
+        app-present-panel {
+            margin-right: 1vw;
+        }
+        app-present-panel:last-child {
+            margin-right: 0;
+        }
+    }
+}

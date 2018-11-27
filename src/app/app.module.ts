@@ -23,6 +23,7 @@ import { PresentViewComponent } from './present-view/present-view.component';
 import { SettingComponent, PresentSettingDialog } from './setting/setting.component';
 import { SettingService } from './_service/setting.service';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { PresentPanelComponent } from './present-panel/present-panel.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     SettingComponent,
     PresentSettingDialog,
     ConfirmDialogComponent,
+    PresentPanelComponent,
   ],
   imports: [
     BrowserModule,

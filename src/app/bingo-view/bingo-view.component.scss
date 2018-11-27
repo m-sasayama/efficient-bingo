@@ -1,6 +1,7 @@
 $padding: 36px;
 
-.component{
+.container{
+    height: calc(100vh - 180px); // play-room画面の下段固定表示しているcontroller領域の高さを引く
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;

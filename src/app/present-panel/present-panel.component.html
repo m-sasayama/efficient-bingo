@@ -1,0 +1,14 @@
+<div [ngClass]="{ 'container': true, 'drawn': file.isDrawn} ">
+  <div class="header-section">
+    <div class="no">No.{{ indexNum + 1 }}</div>
+    <div>{{ file.isSecret ? 'Secret' : file.title }}</div>
+  </div>
+  <div class="content-section">
+    <div class="thumbnail">
+      <img *ngIf="!file.isSecret" [attr.src]="file.src" [attr.title]="file.name" alt="thumbnail">
+      <div *ngIf="file.isSecret" style="font-size: 1rem">Secret</div>
+    </div>
+    <div *ngIf="!file.isSecret" class="description">{{ file.description }}</div>
+    <div *ngIf="file.isSecret" class="description">Secret</div>
+  </div>
+</div>
