@@ -7,6 +7,9 @@ input, textarea {
     // font-size: calc(100vw / 64);
     font-size: 24px;
 }
+textarea{
+    resize: none;
+}
 label {
     // font-size: calc(100vw / 64);
     font-size: 18px;
@@ -16,10 +19,6 @@ img {
     width: $thumb-size;
     height: $thumb-size;
     object-fit: contain;
-}
-.err-message{
-    font-size: 18px;
-    color: $error-color;
 }
 
 .container {
@@ -62,7 +61,11 @@ img {
 .input-fields > * {
     width: 100%;
 }
-
+.err-message{
+    font-size: 18px;
+    color: $error-color;
+    margin-top: $padding / 2;
+}
 .thumbnail-list {
     // position: relative;
     // display: flex;
@@ -123,20 +126,24 @@ img {
     flex: 1;
     flex-direction: column;
     margin-right: $padding;
+    
 }
-.column-frame:last-child() {
-    margin-right: 0;
+.left {
+    flex-basis: 810px;
 }
-.fix-column {
-    flex-basis: 550px;
+.right {
+    flex-basis: 510px;
     flex-grow: 0;
     flex-shrink: 0;
+}
+.column-frame:last-child {
+    margin-right: 0;
 }
 .setting-btn {
     cursor: pointer;
     display: inline-block;
     padding: 8px;
-    margin: 0 $padding;
+    margin-left: $padding;
     background-color: darkcyan;
     border-radius: 8px;
 }

@@ -30,10 +30,13 @@ $fontSize: 0.8rem;
             padding: $padding;
             display: flex;
             margin: 16px 0;
+            
             img {
                 margin: 0 auto;
                 width: 180px;
                 height: 180px;
+                min-width: 100px;
+                min-height: 100px;
                 object-fit: contain;
             }
         }

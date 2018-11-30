@@ -206,27 +206,29 @@ export class SettingComponent implements OnInit {
 
     const isEmpty = (this.presentList.length === 0) && (this.imageFiles.length === 0);
     const existNonSetting = (this.nonSettings.length > 0);
-    let confirmMessage: string;
+    const messages: string[] = new Array<string>();
 
     if (isEmpty) {
-      confirmMessage = 'プレセントの情報が設定されていないため、プレゼント抽選機能は動作しません。'
+      messages.push('プレセント情報が設定されていません。本当に移動してよろしいですか？');
     } else {
       if (existNonSetting) {
-        confirmMessage = 'ビンゴゲームに移動すると不完全なプレゼント情報は削除します。'
+        messages.push('「景品の名前」が設定されていないプレゼント情報があります。');
+        messages.push('移動するとそのプレゼント情報は消えてしまいます。本当に移動してよろしいですか？');
       }
     }
-    if (!confirmMessage) {
+    if (messages.length === 0) {
       this.route.navigate(['efficientbingo/playroom/bingo']);
       return;
     }
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      width: '720px',
-      data: confirmMessage
+      width: '40vw',
+      data: messages
     });
 
     dialogRef.afterClosed().subscribe((isOK) => {
       if (isOK) {
+
         for (const targetName of this.nonSettings) {
           for (let i = this.presentList.length - 1, end = 0; i >= end; i--) {
             if (this.presentList[i].fileName === targetName) {
@@ -239,8 +241,7 @@ export class SettingComponent implements OnInit {
             }
           }
         }
-        console.log(this.presentList);
-        console.log(this.imageFiles);
+
         this.route.navigate(['efficientbingo/playroom/bingo']);
       }
     })
@@ -265,7 +266,7 @@ export class SettingComponent implements OnInit {
     });
 
     const dialogRef = this.dialog.open(PresentSettingDialog, {
-      width: '480px',
+      width: '30vw',
       data: { data: this.presentList }
     });
 
