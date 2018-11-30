@@ -88,12 +88,11 @@ export class PlayRoomComponent implements OnInit {
 
   beginDraw() {
     if (!this.isDrawing) {
-
-      this.isDrawing = true;
-
-      if (this.toggleTheme) {
+      if (this.toggleTheme && this.bingoService.getUntilEnd() !== 0) {
+        this.isDrawing = true;
         this.bingoService.beginDraw();
-      } else {
+      } else if (!this.toggleTheme && this.presentService.getUntilEnd() !== 0) {
+        this.isDrawing = true;
         this.presentService.beginDraw();
       }
     }

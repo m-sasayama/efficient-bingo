@@ -12,12 +12,16 @@ import { Subscription } from 'rxjs';
 })
 export class PresentViewComponent implements OnInit, OnDestroy {
 
-  presentList: PresentPanelInfo[];
-  dummyList: PresentPanelInfo[];
-
   previewMode: boolean;
 
+  frontIndexs: string[];
+  backIndexs: string[];
+
+  presentList: PresentPanelInfo[];
   presentCount: number;
+
+  beforePresent: number;
+  beforeRight: string;
 
   private subscriptions: Subscription[];
   private reelAnime: AnimationPlayer;
@@ -30,15 +34,21 @@ export class PresentViewComponent implements OnInit, OnDestroy {
 
     this.presentList = this.settingService.getPresentPanelInfo();
     this.presentCount = this.presentList.length;
-    this.dummyList = new Array<PresentPanelInfo>();
+
+    this.backIndexs = new Array<string>();
+    this.frontIndexs = new Array<string>();
     this.subscriptions = new Array<Subscription>();
     this.previewMode = true;
-
+    this.beforePresent = 0;
+    this.beforeRight = '0vw';
 
     // アニメーション用のプレゼント情報をダミー配列に格納
     if (this.presentList.length > 0) {
-      for (let i = 0, max = 7; i < max; i++) {
-        this.dummyList.push(this.presentList[i]);
+      for (let i = 0, end = 2; i < end; i++) {
+        this.frontIndexs.push(String(i));
+      }
+      for (let i = this.presentCount - 2, end = this.presentCount; i < end; i++) {
+        this.backIndexs.push(String(i));
       }
     }
 
@@ -49,7 +59,7 @@ export class PresentViewComponent implements OnInit, OnDestroy {
         this.previewMode = false;
 
         if (this.reelAnime) {
-          this.reelAnime.reset();
+          // this.reelAnime.reset();
           this.reelAnime.destroy();
         }
 
@@ -59,18 +69,14 @@ export class PresentViewComponent implements OnInit, OnDestroy {
         let offset: number;
 
         // アニメーションの移動量を計算
-        if (result >= 6) {
-          offset = (result - 3) * 20.2;
-        } else {
-          offset = (this.presentCount + result - 3) * 20.2;
-        }
+        offset = (result - 1 - this.beforePresent) * 20.2;
 
         // アニメーションをつけるHTML要素を取得
         const reelDiv = document.getElementById('reelDiv');
 
         // アニメーションの定義を作成
         const reelAnimation = this._builder.build([
-          style({ right: '0vw' }),
+          style({ right: this.beforeRight }),
           animate(
             '3s ease-in-out',
             style({
@@ -92,33 +98,12 @@ export class PresentViewComponent implements OnInit, OnDestroy {
 
         // アニメーションの開始
         this.reelAnime.play();
+        this.beforeRight = offset + 'vw';
       })
     )
   }
 
   ngOnInit() {
-    // // アニメーションをつけるHTML要素を取得
-    // const reelDiv = document.getElementById('reelDiv');
-    // console.log('is get? ->', reelDiv);
-    // // アニメーションの定義を作成
-    // const reelAnimation = this._builder.build([
-    //   style({ right: '0vw' }),
-    //   animate(
-    //     3000,
-    //     style({
-    //       right: (this.presentCount * 20.2) + 'vw'
-    //     }))
-    // ]);
-    // // 作成したアニメーションと取得した要素を紐づけ
-    // this.reelAnime = reelAnimation.create(reelDiv);
-    // const onDoneFunc = () => {
-    //   this.reelAnime.reset();
-    //   this.reelAnime.onDone(() => {
-    //     onDoneFunc();
-    //   })
-    //   this.presentService.drawn();
-    // }
-    // this.reelAnime.onDone(onDoneFunc);
   }
 
   ngOnDestroy() {

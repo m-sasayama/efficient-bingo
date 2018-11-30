@@ -5,7 +5,7 @@
     align-items: center;
     overflow-y: auto;
 
-    .presents{
+    .presents {
         display: flex;
         position: relative;
 
@@ -15,5 +15,8 @@
         app-present-panel:last-child {
             margin-right: 0;
         }
+    }
+    .scroll-off {
+        overflow-x: hidden;
     }
 }
