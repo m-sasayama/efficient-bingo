@@ -8,17 +8,9 @@ $present-theme: #b55484;
     flex-direction: column;
     height: 100vh;
 
-    // .main-view {
-    //     display: flex;
-    //     flex-direction: row;
-    //     flex-wrap: nowrap;
-    //     align-items: center;
-    //     overflow-y: auto;
-    //     overflow-x: hidden;
-    //     // ↓ control-panelがdisplay:fixedだからマージン必須。
-    //     height: 100vh;
-    //     margin-bottom: $control-menu-height; 
-    // }
+    .main-view {
+        overflow: hidden;
+    }
 
     .control-menu {
         position: fixed;

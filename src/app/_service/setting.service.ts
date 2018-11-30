@@ -12,7 +12,6 @@ export class SettingService {
         this.panelCount = 3;
         this.presents = new Array<PresentInfo>();
         this.imageFiles = new Array<ImageFileInfo>();
-        console.log('constructor SettingService');
     }
 
     public setPanelCount(value: number) {

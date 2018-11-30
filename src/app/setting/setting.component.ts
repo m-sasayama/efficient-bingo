@@ -302,8 +302,6 @@ export class SettingComponent implements OnInit {
           }
         }
       }
-      console.log('presentList: ', this.presentList);
-      // console.log('imgFiles: ', this.imageFiles);
     });
   }
 }

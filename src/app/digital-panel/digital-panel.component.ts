@@ -62,7 +62,6 @@ export class DigitalPanelComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    console.log('digital-panel destoryed.');
     this.subscriptions.forEach((subscription) => {
       subscription.unsubscribe();
     });
