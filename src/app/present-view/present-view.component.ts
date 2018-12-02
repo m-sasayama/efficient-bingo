@@ -15,32 +15,37 @@ export class PresentViewComponent implements OnInit, OnDestroy {
   previewMode: boolean;
 
   frontIndexs: string[];
+  indexList: string[];
   backIndexs: string[];
 
   presentList: PresentPanelInfo[];
   presentCount: number;
 
-  beforePresent: number;
-  beforeRight: string;
+  beforeResult: number;
 
   private subscriptions: Subscription[];
   private reelAnime: AnimationPlayer;
+  private pointGroup1: {};
+  private pointGroup2: {};
 
   constructor(
-    private settingService: SettingService,
     private presentService: PresentService,
     private _builder: AnimationBuilder
   ) {
 
-    this.presentList = this.settingService.getPresentPanelInfo();
-    this.presentCount = this.presentList.length;
+    this.presentList = this.presentService.getPresentPanelInfo();
+    this.presentCount = this.presentService.getPresentCount();
 
     this.backIndexs = new Array<string>();
     this.frontIndexs = new Array<string>();
+    this.indexList = new Array<string>();
+
     this.subscriptions = new Array<Subscription>();
     this.previewMode = true;
-    this.beforePresent = 0;
-    this.beforeRight = '0vw';
+
+    this.pointGroup1 = {};
+    this.pointGroup2 = {};
+    this.beforeResult = 1;
 
     // アニメーション用のプレゼント情報をダミー配列に格納
     if (this.presentList.length > 0) {
@@ -50,6 +55,27 @@ export class PresentViewComponent implements OnInit, OnDestroy {
       for (let i = this.presentCount - 2, end = this.presentCount; i < end; i++) {
         this.backIndexs.push(String(i));
       }
+      for (let i = 0, end = this.presentCount; i < end; i++) {
+        this.indexList.push(String(i));
+      }
+
+      for (let i = 0, end = this.presentCount * 2; i < end; i++) {
+        let caseNo = Math.floor(i / this.presentCount);
+        let index = 0;
+        switch (caseNo) {
+          case 0:
+            index = i + 1;
+            this.pointGroup1[index] = (i * 20.2) + 'vw';
+            break;
+          case 1:
+            index = i % this.presentCount + 1;
+            this.pointGroup2[index] = (i * 20.2) + 'vw';
+            break;
+          default:
+            break;
+        }
+      }
+      debugger;
     }
 
     this.subscriptions.push(
@@ -57,30 +83,34 @@ export class PresentViewComponent implements OnInit, OnDestroy {
 
         // プレビューモードを解除
         this.previewMode = false;
+        // アニメーションをつけるHTML要素を取得
+        const reelDiv = document.getElementById('reelDiv');
 
         if (this.reelAnime) {
-          // this.reelAnime.reset();
           this.reelAnime.destroy();
         }
 
         // 抽選結果を取得
         const result = this.presentService.drawNumber();
-        console.log('present result: %s', result);
-        let offset: number;
+        console.log('draw result: %s', result);
 
-        // アニメーションの移動量を計算
-        offset = (result - 1 - this.beforePresent) * 20.2;
-
-        // アニメーションをつけるHTML要素を取得
-        const reelDiv = document.getElementById('reelDiv');
+        let offsetBgn: string;
+        let offsetEnd: string;
+        if (result > this.beforeResult) {
+          offsetBgn = this.pointGroup1[this.beforeResult];
+          offsetEnd = this.pointGroup2[result];
+        } else {
+          offsetBgn = this.pointGroup2[this.beforeResult];
+          offsetEnd = this.pointGroup1[result];
+        }
 
         // アニメーションの定義を作成
         const reelAnimation = this._builder.build([
-          style({ right: this.beforeRight }),
+          style({ right: offsetBgn }),
           animate(
             '3s ease-in-out',
             style({
-              right: offset + 'vw'
+              right: offsetEnd
             }))
         ]);
 
@@ -98,7 +128,7 @@ export class PresentViewComponent implements OnInit, OnDestroy {
 
         // アニメーションの開始
         this.reelAnime.play();
-        this.beforeRight = offset + 'vw';
+        this.beforeResult = result;
       })
     )
   }

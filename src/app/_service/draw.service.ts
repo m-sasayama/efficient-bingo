@@ -1,11 +1,10 @@
 import { Injectable } from "@angular/core";
-import {
-    Subject, Observable,
-    // forkJoin, of
-} from "rxjs";
-
+import { Subject, Observable, } from "rxjs";
+import { SettingService } from '../_service/setting.service';
+import { PresentInfo, PresentPanelInfo, ImageFileInfo } from '../_object/PresentModel';
 
 class DrawNumberService {
+
     public onBeginDraw: Observable<string>;
     private _onBeginDraw: Subject<string>;
     public onDrawn: Observable<string>;
@@ -71,7 +70,43 @@ export class BingoService extends DrawNumberService {
 
 @Injectable()
 export class PresentService extends DrawNumberService {
-    constructor() {
+
+    private presentPanels: PresentPanelInfo[];
+    private presents: PresentInfo[];
+    private imageFiles: ImageFileInfo[];
+
+    constructor(
+        private settingService: SettingService
+    ) {
         super(0);
+
+        this.presentPanels = new Array<PresentPanelInfo>();
+        this.presents = this.settingService.getPresentInfo();
+        this.imageFiles = this.settingService.getImageInfo();
+        this.reset(this.presents.length);
+
+        for (const present of this.presents) {
+            for (const file of this.imageFiles) {
+                if (present.fileName === file.name) {
+                    this.presentPanels.push({
+                        fileName: present.fileName,
+                        src: file.src,
+                        title: present.title,
+                        description: present.description,
+                        isSecret: present.isSecret,
+                        isDrawn: false
+                    });
+                    break;
+                }
+            }
+        }
     }
+
+    public getPresentPanelInfo(): PresentPanelInfo[] {
+        return this.presentPanels;
+    }
+    public getPresentCount(): number {
+        return this.presentPanels.length;
+    }
+
 }

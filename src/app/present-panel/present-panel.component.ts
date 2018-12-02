@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PresentPanelInfo } from '../_object/PresentModel';
-import { SettingService } from '../_service/setting.service';
+import { PresentService } from '../_service/draw.service';
 
 @Component({
   selector: 'app-present-panel',
@@ -15,12 +15,12 @@ export class PresentPanelComponent implements OnInit {
   file: PresentPanelInfo
 
   constructor(
-    private settingService: SettingService
+    private presentService: PresentService
   ) {
   }
 
   ngOnInit() {
     this.indexNum = parseInt(this.index);
-    this.file = this.settingService.getPresentPanelInfo()[this.index];
+    this.file = this.presentService.getPresentPanelInfo()[this.index];
   }
 }

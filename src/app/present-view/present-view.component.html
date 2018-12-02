@@ -2,13 +2,10 @@
   <div [ngClass]="{'scroll-off': !previewMode}">
 
     <div id="reelDiv" [ngClass]="{ 'presents': true }">
-      <ng-container *ngIf="!previewMode">
-        <app-present-panel *ngFor="let back of backIndexs" [index]="back"></app-present-panel>
-      </ng-container>
-      <app-present-panel *ngFor="let present of presentList; index as i" [index]="i"></app-present-panel>
-      <ng-container *ngIf="!previewMode">
-        <app-present-panel *ngFor="let front of frontIndexs" [index]="front"></app-present-panel>
-      </ng-container>
+      <app-present-panel *ngFor="let back of backIndexs" [index]="back"></app-present-panel>
+      <app-present-panel *ngFor="let index of indexList" [index]="index"></app-present-panel>
+      <app-present-panel *ngFor="let index of indexList" [index]="index"></app-present-panel>
+      <app-present-panel *ngFor="let front of frontIndexs" [index]="front"></app-present-panel>
     </div>
   </div>
 </div>

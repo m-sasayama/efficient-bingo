@@ -31,7 +31,6 @@ export class PlayRoomComponent implements OnInit {
   constructor(
     private bingoService: BingoService,
     private presentService: PresentService,
-    private settingService: SettingService,
     private route: Router
   ) {
 
@@ -48,8 +47,7 @@ export class PlayRoomComponent implements OnInit {
       })
     );
 
-    const presentCount = this.settingService.getPresentPanelInfo().length;
-    this.presentService.reset(presentCount);
+    const presentCount = this.presentService.getPresentCount();
     this.subscriptions.push(
       this.presentService.onDrawn.subscribe((message) => {
         this.isDrawing = false;
