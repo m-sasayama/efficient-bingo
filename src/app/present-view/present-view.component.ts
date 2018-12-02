@@ -75,7 +75,6 @@ export class PresentViewComponent implements OnInit, OnDestroy {
             break;
         }
       }
-      debugger;
     }
 
     this.subscriptions.push(
